@@ -25,6 +25,8 @@ def generate_student_data(num_students=1000, noise_level=5, random_state=42):
     sleep_hours = np.random.uniform(4, 9, num_students)
     tutoring_hours = np.random.uniform(0, 8, num_students)
     parental_support = np.random.randint(1, 6, num_students)
+    lms_active_hours = np.random.uniform(2, 25, num_students)
+    practice_quiz_attempts = np.random.randint(0, 15, num_students)
 
     # -------------------------
     # Hidden "True" Final Marks
@@ -35,6 +37,8 @@ def generate_student_data(num_students=1000, noise_level=5, random_state=42):
         + 2.5 * sleep_hours
         + 1.8 * tutoring_hours
         + 3.0 * parental_support
+        + 0.85 * lms_active_hours
+        + 1.1 * practice_quiz_attempts
         + np.random.normal(0, noise_level, num_students)
     )
 
@@ -65,6 +69,8 @@ def generate_student_data(num_students=1000, noise_level=5, random_state=42):
         "Sleep_Hours": sleep_hours.round(2),
         "Tutoring_Hours": tutoring_hours.round(2),
         "Parental_Support": parental_support,
+        "LMS_Active_Hours": lms_active_hours.round(2),
+        "Practice_Quiz_Attempts": practice_quiz_attempts,
         "Mock_Exam_1": mock_exam_1.round(2),
         "Mock_Exam_2": mock_exam_2.round(2),
         "Prev_GPA": prev_gpa.round(2),
